@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>添加计划</title>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 设置背景颜色
+        document.body.style.backgroundColor = '#ADD8E6'; // 浅蓝色
+
+        // 设置字体颜色为黑色
+        const elements = document.querySelectorAll('h1, a');
+        elements.forEach(element => {
+            element.style.color = 'black'; // 字体颜色为黑色
+        });
+
+        // 设置表格标题行颜色为深蓝色
+        const tableHeaders = document.querySelectorAll('table th');
+        tableHeaders.forEach(header => {
+            header.style.backgroundColor = '#00008B'; // 深蓝色
+            header.style.color = 'white'; // 字体颜色为白色
+        });
+    });
+</script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    a {
+        display: inline-block;
+        margin: 10px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table th, table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+    table th {
+        background-color: #00008B; /* 深蓝色 */
+        color: white; /* 白色字体 */
+    }
+    table tr {
+        background-color: #f2f2f2; /* 条纹效果 */
+    }
+</style>
+
+</head>
+<body>
+    <h1>添加新的计划</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- 自动渲染表单字段 -->
+        <button type="submit">提交</button>
+    </form>
+    <a href="{% url 'plan' %}">返回未完成计划</a>
+</body>
+</html>
